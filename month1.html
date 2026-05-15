@@ -1,0 +1,2175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+<title>Our Story — Ivy 💙</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Crimson+Text:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+
+<style>
+
+:root{
+    --blue:#69a7ff;
+    --blue2:#8dc2ff;
+    --dark:#030816;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:black;
+    color:white;
+    font-family:'Space Grotesk',sans-serif;
+
+    overflow-x:hidden;
+    overflow-y:auto;
+
+    min-height:100vh;
+
+    -webkit-font-smoothing:antialiased;
+}
+
+/* ================= BACKGROUND ================= */
+
+#bg{
+    position:fixed;
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+   filter:
+   brightness(0.45)
+   blur(1px);
+
+    z-index:-3;
+
+    transform:scale(1.08);
+
+    transition:opacity 0.6s ease;
+}
+
+.overlay{
+    position:fixed;
+    inset:0;
+
+    z-index:-2;
+
+    background:
+    radial-gradient(circle at top left,
+    rgba(105,167,255,0.16),
+    transparent 40%),
+
+    radial-gradient(circle at bottom right,
+    rgba(105,167,255,0.08),
+    transparent 40%),
+
+    linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.4),
+    rgba(0,0,0,0.88));
+}
+
+#particles{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+}
+
+/* ================= START SCREEN ================= */
+
+.start-screen{
+    position:fixed;
+    inset:0;
+
+    background:black;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    padding:30px;
+
+    text-align:center;
+
+    z-index:100;
+}
+
+.start-title{
+    font-size:clamp(3rem,10vw,5rem);
+
+    font-family:'Playfair Display',serif;
+
+    margin-bottom:18px;
+
+    background:linear-gradient(
+    135deg,
+    #69a7ff,
+    #ffffff);
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.start-sub{
+    color:rgba(255,255,255,0.65);
+
+    letter-spacing:0.15em;
+
+    margin-bottom:35px;
+
+    font-size:0.9rem;
+}
+
+.start-btn{
+    padding:16px 32px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:linear-gradient(
+    135deg,
+    #69a7ff,
+    #2e6eff);
+
+    color:white;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    font-size:1rem;
+
+    box-shadow:
+    0 0 35px rgba(105,167,255,0.4);
+
+    transition:0.35s ease;
+}
+
+.start-btn:hover{
+    transform:scale(1.05);
+}
+
+/* ================= MAIN ================= */
+
+.container{
+    width:100%;
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+}
+
+/* ================= STORY BOX ================= */
+
+.story-box{
+
+    width:min(1000px,100%);
+
+    background:rgba(255,255,255,0.06);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:28px;
+
+    padding:30px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    box-shadow:
+    0 0 60px rgba(105,167,255,0.08);
+
+    margin:40px 0;
+}
+
+/* ================= TOP ================= */
+
+.month{
+
+    color:var(--blue2);
+
+    letter-spacing:0.15em;
+
+    font-size:0.8rem;
+
+    margin-bottom:12px;
+}
+
+.title{
+
+    font-size:clamp(2.2rem,8vw,4rem);
+
+    font-family:'Playfair Display',serif;
+
+    margin-bottom:12px;
+
+    line-height:1.1;
+
+    background:linear-gradient(
+    135deg,
+    #69a7ff,
+    white);
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.scene{
+
+    display:inline-block;
+
+    padding:10px 18px;
+
+    border-radius:999px;
+
+    background:rgba(105,167,255,0.1);
+
+    border:1px solid rgba(105,167,255,0.2);
+
+    color:#cfe5ff;
+
+    margin-bottom:30px;
+
+    font-size:0.9rem;
+}
+
+/* ================= DIALOGUE ================= */
+
+.dialogue{
+
+    font-family:'Crimson Text',serif;
+
+    font-size:clamp(1.15rem,4vw,1.4rem);
+
+    line-height:2;
+
+    color:rgba(255,255,255,0.94);
+
+    margin-bottom:35px;
+
+    word-break:break-word;
+}
+
+.quote{
+
+    margin:25px 0;
+
+    padding:18px;
+
+    border-left:3px solid var(--blue);
+
+    background:rgba(105,167,255,0.08);
+
+    border-radius:14px;
+
+    color:#d7e9ff;
+
+    font-style:italic;
+}
+
+/* ================= CHOICES ================= */
+
+.choices{
+    display:grid;
+    gap:14px;
+
+    margin-bottom:30px;
+}
+
+.choice{
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,0.05);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:0.3s ease;
+
+    text-align:left;
+
+    font-size:0.95rem;
+}
+
+.choice:hover{
+
+    background:rgba(105,167,255,0.08);
+
+    border-color:rgba(105,167,255,0.35);
+
+    transform:translateY(-2px);
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+}
+
+.progress-section{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:rgba(255,255,255,0.6);
+    font-size:0.9rem;
+}
+
+.progress-bar-mini{
+    width:80px;
+    height:3px;
+    background:rgba(105,167,255,0.2);
+    border-radius:999px;
+    overflow:hidden;
+}
+
+.progress-bar-mini-fill{
+    height:100%;
+    background:linear-gradient(90deg, #69a7ff, #2e6eff);
+    width:0%;
+    transition:width 0.6s ease;
+    box-shadow:0 0 10px rgba(105,167,255,0.5);
+}
+
+.button-group{
+    display:flex;
+    gap:12px;
+}
+
+.nav-btn{
+    padding:12px 24px;
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:12px;
+    background:rgba(255,255,255,0.05);
+    color:white;
+    font-weight:700;
+    cursor:pointer;
+    font-size:0.9rem;
+    transition:all 0.3s ease;
+    font-family:'Space Grotesk',sans-serif;
+}
+
+.nav-btn:hover:not(:disabled){
+    background:rgba(105,167,255,0.1);
+    border-color:rgba(105,167,255,0.3);
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(105,167,255,0.15);
+}
+
+.nav-btn:disabled {
+    opacity:0.3;
+    cursor:not-allowed;
+}
+
+.nav-btn.primary{
+    background:linear-gradient(135deg, #69a7ff, #2e6eff);
+    border:none;
+    box-shadow:0 0 25px rgba(105,167,255,0.35);
+}
+
+.nav-btn.primary:hover:not(:disabled){
+    box-shadow:0 0 40px rgba(105,167,255,0.6);
+    transform:scale(1.03);
+}
+
+.next{
+    padding:14px 26px;
+    border:none;
+    border-radius:16px;
+    background:linear-gradient(135deg, #69a7ff, #2e6eff);
+    color:white;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 0 25px rgba(105,167,255,0.35);
+    transition:0.35s ease;
+}
+
+.next:hover{
+    transform:scale(1.03);
+}
+
+/* ================= FINAL ================= */
+
+.final{
+    text-align:center;
+    padding:40px 10px;
+    animation:fade 2s ease;
+}
+
+.final h1{
+    font-size:clamp(2.8rem,10vw,5rem);
+    font-family:'Playfair Display',serif;
+    margin-bottom:25px;
+    background:linear-gradient(135deg, #69a7ff, white);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.final p{
+    max-width:700px;
+    margin:auto;
+    line-height:2;
+    font-size:1.15rem;
+    color:rgba(255,255,255,0.88);
+    font-family:'Crimson Text',serif;
+}
+
+@keyframes fade{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* ================= MOBILE FIXES ================= */
+
+@media(max-width:768px){
+    .container{
+        align-items:flex-start;
+    }
+
+    .story-box{
+        padding:24px;
+        border-radius:24px;
+        margin-top:20px;
+        margin-bottom:20px;
+    }
+
+    .dialogue{
+        line-height:1.9;
+    }
+
+    .footer{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .button-group{
+        flex-direction:column;
+        width:100%;
+    }
+
+    .nav-btn{
+        width:100%;
+    }
+
+    .progress-section{
+        justify-content:center;
+        width:100%;
+    }
+
+    .final h1{
+        font-size:clamp(2rem,8vw,3.5rem);
+    }
+
+    .final p{
+        font-size:1rem;
+        line-height:2;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<img id="bg" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1600&auto=format&fit=crop">
+
+<div class="overlay"></div>
+<div id="particles"></div>
+
+<!-- MUSIC -->
+
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="birthdayMusic">
+    <source src="birthday.mp3" type="audio/mpeg">
+</audio>
+
+<!-- START -->
+
+<div class="start-screen" id="startScreen">
+
+<div class="start-title">
+Our Story
+</div>
+
+<div class="start-sub">
+6 MONTHS OF YOU 💙
+</div>
+
+<button class="start-btn" onclick="startStory()">
+Begin your Journey💫
+</button>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="container">
+
+<div class="story-box" id="storyBox">
+
+<div class="month" id="month">
+MONTH 1
+</div>
+
+<div class="title" id="title">
+Cloud Ten
+</div>
+
+<div class="scene" id="scene">
+Scene 1 — The Group Chat
+</div>
+
+<div class="dialogue" id="dialogue"></div>
+
+<div class="choices" id="choices"></div>
+
+<div class="footer">
+
+<div class="progress-section">
+<span id="progress">1 / 7</span>
+<div class="progress-bar-mini">
+    <div class="progress-bar-mini-fill" id="progressFill"></div>
+</div>
+</div>
+
+<div class="button-group">
+<button class="nav-btn" id="prevBtn" onclick="previousScene()" disabled>← Previous</button>
+<button class="nav-btn primary" id="nextBtn" onclick="nextScene()">Continue →</button>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const story = [
+
+{
+month:"MONTH 1",
+title:"Cloud Ten",
+scene:"The Beginning",
+
+bg:"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+It all started in a group chat called Cloud Ten.
+
+My friend Katsumata added you there.
+
+At first, you were just another person joining the gc.
+
+But somehow...
+
+everything changed when you appeared.
+`,
+
+choices:[
+"💬 Continue",
+"✨ Keep Reading"
+]
+},
+
+{
+month:"MONTH 1",
+title:"Sticker Chaos",
+scene:"Aura Destroyer",
+
+bg:"https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+You came into the chat spamming stickers nonstop 😭
+
+Meanwhile I was peacefully trying to farm aura...
+
+and you completely destroyed it.
+
+I genuinely thought you were a bot at first because nobody could naturally be that chaotic 😭
+`,
+
+choices:[
+"😭 Continue",
+"💙 Keep Watching"
+]
+},
+
+{
+month:"MONTH 1",
+title:"Pyramids",
+scene:"Nerd Mode",
+
+bg:"https://images.unsplash.com/photo-1539768942893-daf53e448371?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+Meanwhile I was typing entire essays about pyramids and random history facts nobody asked for 😭
+
+You probably thought:
+
+<div class="quote">
+"Why is this guy typing documentaries in a group chat?"
+</div>
+
+But somehow...
+
+you still stayed.
+`,
+
+choices:[
+"📚 Continue",
+"✨ Next Scene"
+]
+},
+
+{
+month:"MONTH 1",
+title:"The DM",
+scene:"Are You A Bot?",
+
+bg:"https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+Then eventually...
+
+I DM'd you.
+
+And out of every possible thing I could've said...
+
+I asked:
+
+<div class="quote">
+"You a bot?"
+</div>
+
+You said no.
+
+And somehow...
+
+that tiny moment quietly changed my life.
+`,
+
+choices:[
+"💬 Continue",
+"💙 Keep Going"
+]
+},
+
+{
+month:"MONTH 1",
+title:"Mars Coffee",
+scene:"Superman",
+
+bg:"https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+One day we roleplayed 😭
+
+I was Superman.
+
+You were a waitress at a coffee shop.
+
+There was no coffee left...
+
+so naturally we stole a rocket and flew to Mars for alien coffee 😭
+
+And yes...
+
+I painted the rocket pink because apparently pink improves aerodynamics.
+`,
+
+choices:[
+"🚀 Continue",
+"☕ Keep Reading"
+]
+},
+
+{
+month:"MONTH 1",
+title:"Wait...",
+scene:"I Can Literally Fly",
+
+bg:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+After escaping aliens...
+
+stealing rockets...
+
+and almost getting caught...
+
+I suddenly realized something.
+
+<div class="quote">
+I literally said I was Superman.
+
+Why didn't I just fly there 😭
+</div>
+
+We laughed so much after that.
+
+And somehow...
+
+we never stopped talking after.
+`,
+
+choices:[
+"💙 Next Month"
+]
+},
+
+{
+month:"MONTH 2",
+title:"December",
+scene:"Scene 1 — Becoming Real",
+
+bg:"https://images.unsplash.com/photo-1516542076529-1ea3854896f2?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+By December...
+
+everything between us started feeling more real.
+
+It wasn't just random conversations anymore.
+
+We started learning the parts of each other nobody else really saw.
+
+The walls slowly started coming down.
+
+And every day...
+
+we stayed longer.
+Talked more.
+Cared more.
+
+Somewhere between all those conversations...
+
+we started becoming important to each other.
+`,
+
+choices:[
+"💙 Continue",
+"✨ Stay With Her"
+]
+},
+
+{
+month:"MONTH 2",
+title:"Your World",
+scene:"Scene 2 — The Things You Carried",
+
+bg:"https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+You started telling me about your life.
+
+About losing your dad at a young age.
+
+About the fighting at home.
+The drinking.
+The chaos.
+The anxiety it left behind.
+
+You told me about the panic attacks.
+About how exhausting everything felt.
+
+And honestly...
+
+hearing everything you went through only made me care about you more.
+
+I hated the idea of you carrying all that pain alone.
+`,
+
+choices:[
+"💙 Stay Beside Her",
+"✨ Continue"
+]
+},
+
+{
+month:"MONTH 2",
+title:"Late Night Comfort",
+scene:"Scene 3 — I'll Stay",
+
+bg:"https://images.unsplash.com/photo-1495567720989-cebdbdd97913?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+There were nights where things became too much for you.
+
+And even though I was far away...
+
+I wanted to be there for you in every way I could.
+
+So I stayed.
+
+I listened.
+I comforted you.
+I tried to make you smile again.
+
+<div class="quote">
+I wanted to become a place where your mind could rest.
+</div>
+
+And somehow...
+
+you slowly started trusting me with your pain.
+`,
+
+choices:[
+"💙 Continue",
+"✨ Keep Reading"
+]
+},
+
+{
+month:"MONTH 2",
+title:"The Things I Hid",
+scene:"Scene 4 — My Side",
+
+bg:"https://images.unsplash.com/photo-1512678080530-7760d81faba6?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+At the same time...
+
+I was hiding a lot too.
+
+My health was getting worse.
+
+There were hospital visits.
+Doctors.
+Fear.
+Silence.
+
+I didn't really know how to talk about it.
+
+So instead...
+
+I kept trying to be strong for you while quietly struggling myself.
+`,
+
+choices:[
+"💙 Continue",
+"✨ Stay"
+]
+},
+
+{
+month:"MONTH 2",
+title:"Hospital Christmas",
+scene:"Scene 5 — Cold Lights",
+
+bg:"https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+Christmas came.
+
+But instead of spending it at home...
+
+I spent it in the hospital.
+
+Cold rooms.
+Bright lights.
+Machines.
+Long nights.
+
+And somehow...
+
+even through all of that...
+
+you stayed with me.
+
+You checked on me constantly.
+
+And for once...
+
+I didn't feel completely alone.
+`,
+
+choices:[
+"💙 Continue",
+"✨ Keep Going"
+]
+},
+
+{
+month:"MONTH 2",
+title:"Warmth",
+scene:"Scene 6 — You Stayed",
+
+bg:"https://images.unsplash.com/photo-1511988617509-a57c8a288659?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+You supported me emotionally in ways I wasn't used to.
+
+You made me feel cared for.
+
+Safe.
+
+Wanted.
+
+<div class="quote">
+Even in the coldest moments...
+you somehow felt warm.
+</div>
+
+And little by little...
+
+I started loving you more than myself.
+`,
+
+choices:[
+"💙 Continue",
+"✨ Final Scene"
+]
+},
+
+{
+month:"MONTH 2",
+title:"Attached",
+scene:"Scene 7 — Us",
+
+bg:"https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+Somewhere during December...
+
+we became attached to each other in a way neither of us expected.
+
+Even while life around us felt painful and unstable...
+
+we became comfort for each other.
+
+And honestly...
+
+I think that was the month I realized:
+
+<div class="quote">
+You weren't just someone I talked to anymore.
+
+You were becoming home to me.
+</div>
+`,
+
+choices:[
+"💙 Next Month"
+]
+},
+
+/* ===================== MONTH 3 ===================== */
+
+{
+month:"MONTH 3",
+title:"January",
+scene:"Scene 1 — Still Here",
+
+bg:"https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+January came...
+
+and things still weren't easy.
+
+I was still struggling with my health.
+
+Surgeries.
+Recovery.
+Fear.
+
+But through all of it...
+
+you stayed beside me emotionally.
+
+Even when life felt heavy...
+
+you never stopped caring.
+`,
+
+choices:[
+"💙 Continue",
+"✨ Stay"
+]
+},
+
+{
+month:"MONTH 3",
+title:"Your Voice",
+scene:"Scene 2 — Windy Here",
+
+bg:"https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+This was the month you started sending voice notes.
+
+At first you whispered because you were shy 😭
+
+And I still remember your first voice note perfectly.
+
+<div class="quote">
+"It's a bit windy here."
+</div>
+
+In that soft British accent...
+
+while whispering.
+
+And somehow it instantly became one of the cutest things I'd ever heard.
+
+I replayed it so many times 😭
+`,
+
+choices:[
+"💙 Continue",
+"✨ Keep Listening"
+]
+},
+
+{
+month:"MONTH 3",
+title:"Closer",
+scene:"Scene 3 — More Of You",
+
+bg:"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+Every day after that...
+
+we got closer and closer.
+
+You slowly became more comfortable around me.
+
+More voice notes.
+More laughter.
+More late night conversations.
+
+And every single time I learned something new about you...
+
+I just wanted to know even more.
+`,
+
+choices:[
+"💙 Continue"
+]
+},
+
+{
+month:"MONTH 3",
+title:"Little Fights",
+scene:"Scene 4 — Still Us",
+
+bg:"https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+Of course...
+
+we still had little fights sometimes.
+
+Misunderstandings.
+Small arguments.
+Random moments of jealousy.
+
+But somehow...
+
+we always found our way back to each other.
+
+And honestly...
+
+even those moments made us understand each other more.
+`,
+
+choices:[
+"💙 Continue"
+]
+},
+
+{
+month:"MONTH 3",
+title:"The Breakup",
+scene:"Scene 5 — Distance",
+
+bg:"https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+Then things got complicated.
+
+People lied to you about me.
+
+And slowly...
+
+you started becoming distant.
+
+You ignored me.
+
+And honestly...
+
+it hurt more than I wanted to admit.
+
+Eventually...
+
+we broke up.
+`,
+
+choices:[
+"💔 Continue"
+]
+},
+
+{
+month:"MONTH 3",
+title:"Two Days",
+scene:"Scene 6 — My Heart Stayed",
+
+bg:"https://images.unsplash.com/photo-1496307653780-42ee777d4833?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+During that breakup...
+
+I tried talking to someone else.
+
+But it only lasted two days.
+
+Because no matter what I did...
+
+my heart was still with you.
+
+It always came back to you.
+`,
+
+choices:[
+"💙 Continue"
+]
+},
+
+{
+month:"MONTH 3",
+title:"Back Together",
+scene:"Scene 7 — Chose You Again",
+
+bg:"https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+After about a week...
+
+we finally talked properly.
+
+We explained everything.
+Sorted everything out.
+Understood each other again.
+
+And then...
+
+we got back together.
+
+Honestly...
+
+that whole situation made me realize something important.
+
+<div class="quote">
+No matter what happened...
+
+I still chose you.
+</div>
+`,
+
+choices:[
+"💙 Next Month"
+]
+},
+
+/* ===================== MONTH 4 ===================== */
+
+{
+month:"MONTH 4",
+title:"First Calls",
+scene:"Scene 1 — Roblox",
+
+bg:"https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+Month four was when everything started feeling real in a completely different way.
+
+We started calling each other.
+
+And somehow hearing your voice normally instead of whispers felt surreal.
+
+I still remember our first call perfectly.
+
+I was outside at a tech event.
+
+And even though we were both nervous...
+
+we spent the whole time laughing while playing Roblox together 😭
+`,
+
+choices:[
+"💙 Continue",
+"🎮 Keep Playing"
+]
+},
+
+{
+month:"MONTH 4",
+title:"Nervous Laughter",
+scene:"Scene 2 — Voice To Voice",
+
+bg:"https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+At first we were both nervous 😭
+
+There were awkward silences.
+Random laughs.
+Tiny moments where neither of us knew what to say.
+
+But somehow...
+
+that made everything feel even more genuine.
+
+And little by little...
+
+the nervousness disappeared.
+
+It just became us.
+`,
+
+choices:[
+"💙 Continue"
+]
+},
+
+{
+month:"MONTH 4",
+title:"The Walk Home",
+scene:"Scene 3 — Stay On Call",
+
+bg:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+Later that night...
+
+my friends were supposed to drive me home.
+
+But I told them to leave 😭
+
+Because honestly...
+
+I just wanted to keep talking to you.
+
+So instead...
+
+I walked home alone while staying on call with you the entire time.
+`,
+
+choices:[
+"💙 Continue"
+]
+},
+
+{
+month:"MONTH 4",
+title:"Don't Scare Me",
+scene:"Scene 4 — The Bridge",
+
+bg:"https://images.unsplash.com/photo-1519501025264-65ba15a82390?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+You kept worrying I'd get hit by a car because you could hear traffic around me 😭
+
+Then I jokingly pretended I was about to jump off a bridge.
+
+And you got genuinely scared.
+
+You were begging me to go home safely.
+
+You sounded so worried that I immediately stopped joking around.
+
+And honestly...
+
+that moment made me realize how much you cared about me.
+`,
+
+choices:[
+"💙 Continue"
+]
+},
+
+{
+month:"MONTH 4",
+title:"The Call Home",
+scene:"Scene 5 — Warm Nights",
+
+bg:"https://images.unsplash.com/photo-1495567720989-cebdbdd97913?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+So I stayed on the phone with you the whole walk home.
+
+And honestly...
+
+that call felt warm.
+
+Peaceful.
+
+We shared stories.
+Talked about random things.
+Laughed nonstop.
+
+For some reason...
+
+even silence felt comforting with you.
+`,
+
+choices:[
+"💙 Continue"
+]
+},
+
+{
+month:"MONTH 4",
+title:"Noodles Debate",
+scene:"Scene 6 — Before Or After?",
+
+bg:"https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+Then somehow...
+
+we ended up arguing about noodles 😭
+
+I said you add the spices before cooking.
+
+You said after cooking.
+
+And for some reason...
+
+that tiny argument became one of my favorite memories.
+
+Because even dumb conversations felt special with you.
+`,
+
+choices:[
+"💙 Continue"
+]
+},
+
+{
+month:"MONTH 4",
+title:"Everyday Life",
+scene:"Scene 7 — Part Of Me",
+
+bg:"https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+That month...
+
+you truly became part of my everyday life.
+
+Calls became normal.
+
+Your voice became comforting.
+
+And every single day...
+
+I found myself wanting to spend even more time with you.
+
+<div class="quote">
+Somehow...
+distance stopped feeling like distance.
+</div>
+`,
+
+choices:[
+"💙 Next Month"
+]
+},
+
+/* ===================== MONTH 5 ===================== */
+
+{
+month:"MONTH 5",
+title:"Opening Up",
+scene:"Scene 1 — My Life",
+
+bg:"https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+By month five...
+
+I finally started telling you about my own life.
+
+About the neglect.
+The abuse.
+The loneliness I grew up with.
+
+And honestly...
+
+it wasn't easy talking about those things.
+
+But somehow...
+
+you made it feel safe to open up.
+`,
+
+choices:[
+"💙 Continue"
+]
+},
+
+{
+month:"MONTH 5",
+title:"Warmth",
+scene:"Scene 2 — You Understood Me",
+
+bg:"https://images.unsplash.com/photo-1495567720989-cebdbdd97913?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+You listened to me in ways nobody else really had before.
+
+You cared.
+
+You stayed.
+
+And little by little...
+
+you made me feel understood.
+
+Like maybe I wasn't carrying everything alone anymore.
+`,
+
+choices:[
+"💙 Continue"
+]
+},
+
+{
+month:"MONTH 5",
+title:"Sleep Calls",
+scene:"Scene 3 — Midnight",
+
+bg:"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+We cried together on calls.
+
+Stayed awake comforting each other.
+
+And sometimes...
+
+we'd fall asleep together while still on call 😭
+
+Those nights felt peaceful.
+
+Like the world became quieter whenever it was just us.
+`,
+
+choices:[
+"💙 Continue"
+]
+},
+
+{
+month:"MONTH 5",
+title:"Hard Nights",
+scene:"Scene 4 — Too Much",
+
+bg:"https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+That month was emotionally overwhelming.
+
+Family problems.
+Stress.
+Pain.
+Everything piling up at once.
+
+And honestly...
+
+there were nights where life felt unbearably heavy.
+
+But even then...
+
+you stayed beside me emotionally through all of it.
+`,
+
+choices:[
+"💙 Continue"
+]
+},
+
+{
+month:"MONTH 5",
+title:"Messages",
+scene:"Scene 5 — Still Here",
+
+bg:"https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+During one of the hardest moments of my life...
+
+I ended up hospitalized.
+
+And when I finally looked at my phone later...
+
+I saw all the messages from you.
+
+Checking on me.
+Worrying about me.
+Wanting me to be okay.
+
+And honestly...
+
+that meant more to me than you'll probably ever realize.
+`,
+
+choices:[
+"💙 Continue"
+]
+},
+
+{
+month:"MONTH 5",
+title:"Us",
+scene:"Scene 6 — Every Emotion",
+
+bg:"https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+That month had everything.
+
+Fights.
+Comfort.
+Laughter.
+Tears.
+Late night talks.
+Healing.
+
+We experienced every emotion together.
+
+And somehow...
+
+through all the chaos...
+
+we still kept choosing each other.
+`,
+
+choices:[
+"💙 Continue"
+]
+},
+
+{
+month:"MONTH 5",
+title:"Closer Than Words",
+scene:"Scene 7 — Late Nights",
+
+bg:"https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+That month had everything.
+
+Fights.
+Comfort.
+Laughter.
+Tears.
+Late night calls that stretched way too long...
+
+and moments where silence said more than words ever could.
+
+There were nights where we stayed awake just to hear each other breathe on the call.
+
+No talking sometimes.
+
+Just being there.
+
+And somehow...
+
+that felt more intimate than anything else.
+
+Like the world disappeared...
+and it was just you and me.
+
+Even the intimate moments we had🌚
+`,
+
+choices:[
+"💙 Continue"
+]
+},
+
+{
+month:"MONTH 5",
+title:"Right Beside You",
+scene:"Scene 8 — Always",
+
+bg:"https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+Whenever you felt down...
+
+I always told you the same thing:
+
+<div class="quote">
+"I'm right beside you."
+</div>
+
+And even though we were far apart...
+
+it genuinely felt true.
+
+Because by then...
+
+we weren't just two people talking anymore.
+
+We had become each other's safe place.
+`,
+
+choices:[
+"💙 Next Month"
+]
+},
+
+{
+month:"MONTH 6",
+title:"Happy Birthday Ivy 💙",
+scene:"Scene 1 — Six Months Later",
+
+bg:"https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+Six months later...
+
+and somehow...
+
+you became part of my life so naturally that I can't even remember what normal felt like before you.
+
+You were there for my worst moments.
+
+The hospital nights.
+The fear.
+The breakdowns.
+The overthinking.
+The moments where life genuinely felt unbearable.
+
+And somehow...
+
+you stayed.
+
+Even when I was difficult.
+Even when I shut down.
+Even when I didn't know how to explain what I was feeling.
+
+You still stayed beside me.
+
+<div class="quote">
+You loved me during versions of myself I didn't even know how to love.
+</div>
+
+And I don't think you'll ever fully understand how much that meant to me.
+`,
+
+choices:[
+"💙 Continue"
+]
+},
+
+{
+month:"MONTH 6",
+title:"The Distance",
+scene:"Scene 2 — Yet So Close",
+
+bg:"https://images.unsplash.com/photo-1495567720989-cebdbdd97913?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+It's crazy sometimes.
+
+How someone so far away...
+
+could feel closer to me than people standing right beside me.
+
+You became part of my mornings.
+Part of my nights.
+Part of my thoughts throughout the day.
+
+Calls with you became comfort.
+
+Your voice became home.
+
+Even silence with you felt safe.
+
+And honestly...
+
+I don't think distance ever stood a chance against what we became.
+`,
+
+choices:[
+"💙 Continue"
+]
+},
+
+{
+month:"MONTH 6",
+title:"The Little Things",
+scene:"Scene 3 — Everything About You",
+
+bg:"https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+I still remember tiny things about you randomly.
+
+The shy whispering in your first voice note.
+
+The way you worried about me while I walked home.
+
+The way we'd laugh over absolutely nothing at 2am.
+
+Even your random sticker spam 😭
+
+And somehow...
+
+all those tiny moments became memories I never want to lose.
+
+Because it was never just the big moments.
+
+It was you.
+
+All of you.
+`,
+
+choices:[
+"💙 Continue"
+]
+},
+
+{
+month:"MONTH 6",
+title:"What You Changed",
+scene:"Scene 4 — Healing",
+
+bg:"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+Before you...
+
+I got used to carrying everything alone.
+
+The pain.
+The loneliness.
+The fear.
+
+I genuinely believed I had to survive everything by myself.
+
+But then you appeared.
+
+And slowly...
+
+without even realizing it...
+
+you changed me.
+
+You made life feel softer.
+
+You made me feel understood.
+
+You made me feel like maybe...
+just maybe...
+
+I deserved love too.
+`,
+
+choices:[
+"💙 Continue"
+]
+},
+
+{
+month:"MONTH 6",
+title:"If I Could",
+scene:"Scene 5 — One Wish",
+
+bg:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+If I could give you one thing...
+
+it would be the ability to see yourself through my eyes.
+
+So you'd finally understand how special you really are.
+
+Not because you're perfect.
+
+But because you're you.
+
+Because even after everything life put you through...
+
+you still kept loving.
+Still kept caring.
+Still kept trying.
+
+And honestly...
+
+that's one of the most beautiful things about you.
+`,
+
+choices:[
+"💙 Continue"
+]
+},
+
+{
+month:"MONTH 6",
+title:"Forever Grateful",
+scene:"Scene 6 — Thank You",
+
+bg:"https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+Thank you...
+
+for every late night.
+
+Every call.
+
+Every comforting message.
+
+Every moment you stayed when you could've left.
+
+Thank you for becoming my safe place.
+
+Thank you for making six months feel like an entire lifetime of memories.
+
+And thank you...
+
+for loving me in a way I'll probably never forget for the rest of my life.
+`,
+
+choices:[
+"💙 Final Scene"
+]
+},
+
+{
+month:"MONTH 6",
+title:"Happy Birthday Ivy 💙",
+scene:"Final Scene — Always You",
+
+bg:"https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1600&auto=format&fit=crop",
+
+text:`
+So here we are now.
+
+Six months later.
+
+After every laugh.
+Every tear.
+Every fight.
+Every late night.
+Every memory.
+
+And somehow...
+
+after everything...
+
+I'd still choose you all over again.
+
+<div class="quote">
+No matter where life takes us...
+
+a part of my heart will always belong to you.
+</div>
+
+Happy Birthday Ivy 💙
+
+And happy six months.
+
+Thank you for being my favorite person.
+`,
+
+choices:[
+"🎉 Finish"
+]
+},
+
+];
+
+let current = 0;
+
+const month = document.getElementById("month");
+const title = document.getElementById("title");
+const scene = document.getElementById("scene");
+const dialogue = document.getElementById("dialogue");
+const choices = document.getElementById("choices");
+const bg = document.getElementById("bg");
+const progress = document.getElementById("progress");
+const progressFill = document.getElementById("progressFill");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+
+function startStory(){
+
+    document.getElementById("bgMusic").volume = 0.35;
+    document.getElementById("bgMusic").play();
+
+    gsap.to("#startScreen",{
+
+        opacity:0,
+        duration:1,
+
+        onComplete:()=>{
+
+            document.getElementById("startScreen").style.display="none";
+
+        }
+
+    });
+
+    updateScene();
+}
+
+let typingInterval;
+
+function typeWriter(text){
+
+    clearInterval(typingInterval);
+
+    dialogue.innerHTML = "";
+
+    let i = 0;
+
+    const plainText = text;
+
+    typingInterval = setInterval(()=>{
+
+        dialogue.innerHTML = plainText.substring(0, i);
+
+        i++;
+
+        if(i > plainText.length){
+
+            clearInterval(typingInterval);
+
+            dialogue.innerHTML = text;
+
+        }
+
+    },12);
+
+}
+
+function updateScene(){
+
+    const s = story[current];
+
+    clearInterval(typingInterval);
+
+    gsap.killTweensOf("#bg");
+    gsap.killTweensOf(".story-box");
+
+    month.textContent = s.month;
+    title.textContent = s.title;
+    scene.textContent = s.scene;
+
+    progress.textContent =
+    `${current+1} / ${story.length}`;
+
+    const newBg = new Image();
+
+    newBg.src = s.bg;
+
+    newBg.onload = () => {
+
+        gsap.to("#bg",{
+            opacity:0.85,
+            duration:0.15,
+
+            onComplete:()=>{
+
+                bg.src = s.bg;
+
+                gsap.to("#bg",{
+                    opacity:1,
+                    duration:0.25
+                });
+
+            }
+        });
+
+    };
+
+    typeWriter(s.text);
+
+    choices.innerHTML="";
+
+    s.choices.forEach(choice=>{
+
+        let btn = document.createElement("button");
+
+        btn.className="choice";
+
+        btn.innerText = choice;
+
+        btn.onclick = nextScene;
+
+        choices.appendChild(btn);
+
+    });
+
+    gsap.fromTo(".story-box",
+
+        {
+            y:10,
+            opacity:0.96
+        },
+
+        {
+            y:0,
+            opacity:1,
+            duration:0.35,
+            ease:"power2.out"
+        }
+
+    );
+
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = false;
+
+    const progressPercent = ((current + 1) / story.length) * 100;
+    progressFill.style.width = progressPercent + "%";
+}
+
+function nextScene(){
+
+    clearInterval(typingInterval);
+
+    if(current < story.length-1){
+
+        current++;
+
+        updateScene();
+
+    }else{
+        
+        document.getElementById("bgMusic").pause();
+
+        const birthday = document.getElementById("birthdayMusic");
+
+         birthday.volume = 0.45;
+         birthday.play(); 
+
+        document.getElementById("storyBox").innerHTML=`
+
+        <div class="final">
+
+        <h1>
+        Happy Birthday Ivy 💙
+        </h1>
+
+        <p>
+        From Cloud Ten...
+        to late night calls...
+        to every laugh and every memory...
+
+        thank you for making life brighter.
+
+        Happy 6 Months 💙
+        </p>
+
+        </div>
+
+        `;
+
+    }
+
+}
+
+function previousScene(){
+
+    clearInterval(typingInterval);
+
+    if(current > 0){
+
+        current--;
+
+        updateScene();
+
+    }
+
+}
+
+/* PARTICLES */
+
+tsParticles.load("particles",{
+
+    particles:{
+
+        number:{
+            value:65
+        },
+
+        color:{
+            value:"#69a7ff"
+        },
+
+        opacity:{
+            value:0.45
+        },
+
+        size:{
+            value:{min:1,max:3}
+        },
+
+        move:{
+            enable:true,
+            speed:0.5
+        }
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
